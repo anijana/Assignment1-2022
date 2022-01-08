@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest Operator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #218c74;
+      }
+      .d-none {
+        display: none;
+      }
+      #inp,
+      .val {
+        height: 30px;
+        width: 100px;
+        font-size: 10px;
+        text-align: center;
+        border-radius: 5px;
+        margin-left: 220px;
+        margin-top: 30px;
+        border: none;
+        outline: none;
+        background-color: #f5f6fa;
+        color: #353b48;
+      }
+      #gen,
+      #res {
+        margin: 20px 0 0 125px;
+      }
+      h2 {
+        color: #fbc531;
+        font-size: 20px;
+        text-align: center;
+      }
+      h2:hover {
+        
+        color: #c23616;
+      }
+      button {
+        height: 25px;
+        width: 80px;
+        border: none;
+        border-radius: 5px;
+        background-color: #485460;
+        text-transform: capitalize;
+        color: #4cd137;
+        font-weight: 500;
+        font-size: 10px;
+        cursor: pointer;
+        outline: none;
+      }
+      span {
+        margin-left: 150px;
+        margin-top: 40px;
+        font-size: 20px;
+        font-style: oblique;
+        color: #34e7e4;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <h2>Check Minimum Number in Array</h2>
+    <div id="container"></div>
+    <input type="number" placeholder="Enter a value" id="inp" /><br />
+    <button id="gen">Generate</button>
+    <button id="res">result</button>
+    <br /><span id="ans" class="d-none">0</span>
+
+    <script>
+      let input = document.getElementById("inp");
+      let n = input.value;
+      let N = parseInt(n);
+      let gen_btn = document.getElementById("gen");
+      gen_btn.addEventListener("click", function () {
+        let input = document.getElementById("inp");
+        let n = input.value;
+        let N = parseInt(n);
+        let container = document.getElementById("container");
+        let ans = document.getElementById("ans");
+        //console.log(n);
+        for (let i = 0; i < N; i++) {
+          let val = document.createElement("input");
+          val.setAttribute("id", `val${i}`);
+          val.classList.add("val");
+          container.appendChild(val);
+          val.placeholder = `Enter Num${i + 1}`;
+          val.value = "";
+        }
+        gen_btn.classList.add("d-none");
+        input.classList.add("d-none");
+        ans.classList.remove("d-none");
+      });
+
+      function MinNumber(...num) {
+        let min = num[0];
+        for (let i = 1; i < num.length; i++) {
+          if (min > num[i]) {
+            min = num[i];
+          }
+        }
+        return min;
+      }
+      //MinNumber(...array);
+      let res = document.getElementById("res");
+      res.addEventListener("click", function () {
+        let arr = [];
+        let input = document.getElementById("inp");
+        let n = input.value;
+        let N = parseInt(n);
+        for (let i = 0; i < N; i++) {
+          let val = document.getElementById(`val${i}`);
+          let x = val.value;
+          x = parseInt(x);
+          arr.push(x);
+        }
+        console.log(arr);
+        let result = MinNumber(...arr);
+        let answer = document.getElementById("ans");
+        answer.innerText = "Minimum Number is: " + result;
+        console.log(result);
+      });
+    </script>
+  </body>
+</html>

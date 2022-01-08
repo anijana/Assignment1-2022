@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>fizzbuzz</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        /* -moz-box-sizing: border-box; 
+     -webkit-box-sizing: border-box;  */
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        height: 0;
+      }
+
+      .clear {
+        clear: both;
+      }
+
+      .alignright {
+        float: right;
+        padding: 0 0 10px 10px;
+      }
+
+      .alignleft {
+        float: left;
+        padding: 0 10px 10px 0;
+      }
+
+      body {
+        background-color: #1abc9c;
+      }
+
+      .answer,
+      .questions {
+        text-align: center;
+      }
+      .box {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .seeWhat,
+      .values {
+        text-align: center;
+        text-shadow: 1px 1px rgb(32, 96, 32);
+        color: white;
+      }
+      #enter {
+        border: none;
+        padding: 5px 10px;
+        font-size: 0.9em;
+        margin: 10px;
+        outline: none;
+        width: 50%;
+      }
+
+      #submit {
+        width: 1px;
+        background-color: #e8116b;
+        border-radius: 5px;
+        color: white;
+        margin-top: 20px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px 5px;
+        font-size: 0.9em;
+      }
+
+      @media (min-width: 375px) and (max-width: 667px) {
+        .box {
+          height: 200 px;
+        }
+        .seeWhat {
+          text-shadow: none;
+          color: rgb(0, 255, 0);
+        }
+        #enter,
+        #submit {
+          width: 20%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="seeWhat">Enter a number and Check Fizzbuzz or not</h2>
+    <section class="values">
+      <input
+        id="enter"
+        type="text"
+        name=""
+        value=""
+        placeholder="Enter Value"
+      />
+      <button id="submit" type="button" name="button">Submit</button>
+    </section>
+    <h2 class="seeWhat">Results:</h2>
+    <div class="answer">
+      <h3 id="result"></h3>
+    </div>
+
+    <script>
+      document.getElementById("submit").onclick = fizzbuzz;
+
+      function fizzbuzz() {
+        var num = parseFloat(document.getElementById("enter").value);
+
+        if (num % 3 == 0 && num % 5 == 0) {
+          document.getElementById("result").innerHTML = "Fizzbuzz!";
+          document.getElementById("enter").value = "";
+          
+
+          document.getElementById("fizzbuzz").style.visibility = "visible";
+          document.getElementById("fizzbuzz").onclick = fizzbuzz;
+        } else if (num % 3 == 0) {
+          document.getElementById("result").innerHTML = "Fizz...";
+          document.getElementById("enter").value = "";
+
+          document.getElementById("fizz").style.visibility = "visible";
+          document.getElementById("fizz").onclick = fizz;
+        } else if (num % 5 == 0) {
+          document.getElementById("result").innerHTML = "buzz...";
+          document.getElementById("enter").value = "";
+
+          document.getElementById("buzz").style.visibility = "visible";
+          document.getElementById("buzz").onclick = buzz;
+        } else {
+          document.getElementById("result").innerHTML =
+            "Sorry!! Plz Enter The Valid Number?";
+          document.getElementById("enter").value = "";
+
+          document.getElementById("error").style.visibility = "visible";
+          document.getElementById("error").onclick = error;
+        }
+      }
+    </script>
+  </body>
+</html>

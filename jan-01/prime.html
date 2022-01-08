@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prime Number</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+          background-color: #d1ccc0;
+        }
+      .val {
+        margin: 20px;
+        width: 80px;
+      }
+      #length,
+      .val {
+        font-size: 10px;
+        text-align: center;
+        border: none;
+        background-color: #f7f1e3;
+        border-radius: 10px;
+        height: 15vh;
+        margin-left: 220px;
+        color: black;
+        outline: none;
+      }
+      #value {
+        margin-left: 10px;
+      }
+      button {
+        margin: 20px 100px 0 0 ;
+        height: 20px;
+        width: 50px;
+        background-color: #34ace0;
+        border: none;
+        border-radius: 5px;
+        font-size: 3vh;
+        color: white;
+        text-transform: capitalize;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+      }
+      .val0 {
+        background-color: chartreuse;
+      }
+      .d-none {
+        display: none;
+      }
+      h2 {
+        text-align: center;
+      }
+     
+     
+      #ans {
+        text-transform: capitalize;
+        font-size: 15px;
+        color: #2c2c54;
+      }
+      .results{
+        margin-left: 170px;
+      }
+     
+    </style>
+  </head>
+  <body>
+    <h2> Check PrimeNumber in Array</h2>
+    <div id="container"></div>
+    <input type="number" placeholder="Enter a value" id="length" />
+    <br />
+    <div class="results">
+    <button id="value">Generate</button>
+   
+    <button id="result">result</button>
+    <span id="ans"></span>
+  </div>
+    <script>
+      let array = [];
+      let input = document.getElementById("length");
+      let n = input.value;
+      let N = parseInt(n);
+      let validate = document.getElementById("value");
+      validate.addEventListener("click", function () {
+        let input = document.getElementById("length");
+        let val = document.getElementById("value");
+        let n = input.value;
+        let N = parseInt(n);
+        for (let i = 0; i < N; i++) {
+          let element = document.createElement("input");
+          let dis = document.getElementById("container");
+          element.setAttribute("id", `val${i}`);
+          element.classList.add("val");
+          dis.appendChild(element);
+          element.placeholder = `Enter the num ${i + 1} `;
+          element.value = "";
+        }
+        input.classList.add("d-none");
+        val.classList.add("d-none");
+      });
+
+      Array.prototype.PrimeNum = function () {
+        let arr = [];
+        for (let i = 0; i < this.length; i++) {
+          let count = 0;
+
+          for (let j = 2; j < this[i]; j++) {
+            if (this[i] % j === 0) {
+              count++;
+              break;
+            }
+          }
+          arr.push(count);
+        }
+        console.log(arr);
+        for (let k = 0; k < arr.length; k++) {
+          if (arr[k] == 0) {
+            return true;
+          }
+        }
+        return false;
+      };
+      let result = document.getElementById("result");
+      result.addEventListener("click", function () {
+        array = [];
+        let input = document.getElementById("length");
+        let n = input.value;
+        let N = parseInt(n);
+        for (let i = 0; i < N; i++) {
+          let x = document.getElementById(`val${i}`);
+          let val = x.value;
+          array.push(parseInt(val));
+        }
+        console.log(array);
+        let ans = document.getElementById("ans");
+        let x = array.PrimeNum();
+        console.log(x);
+        ans.innerText = x;
+      });
+    </script>
+  </body>
+</html>

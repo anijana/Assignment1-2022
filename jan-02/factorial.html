@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            text-align: center;
+             font-size: 15px;
+             margin: 10px;
+             background-color: #7f8c8d;
+        }
+        h3{
+            font-size: 30px;
+            color: #c0392b;
+        }
+        button{
+            border-radius: 5px;
+            background-color: #3498db;
+            font-size: 10px;
+            padding: 3px 7px;
+            margin-left: 100px;
+            border: none;
+            outline: none;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+        input{
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 10px;
+            padding: 5px;
+            margin-left: 5px;
+        }
+        #result{
+            margin: 20px 0 0 100px;
+            color: #FFC312;
+        }
+    </style>
+</head>
+<body>
+    <body>  
+        <h3> Find the Factorial Number </h3>  <br><br><br>
+        Enter a number:<input id = "number">  
+        <br><br>  
+        <button onclick = "fn()"> Click </button>  
+        <p id = "result"></p>  
+        <script>  
+        function fn1(num)   
+        {  
+        if (num == 0) {  
+        return 1;  
+        }  
+        else {  
+        return num * fn1( num - 1 );  
+        }  
+        }  
+        function fn()  
+        {  
+        var num = document.getElementById("number").value;  
+        var fact = fn1(num);  
+        document.getElementById("result").innerHTML="The factorial of the number " + num + " is: " + fact;  
+        }  
+        </script>  
+        </body>  
+</body>
+</html>
